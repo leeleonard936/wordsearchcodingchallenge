@@ -8,9 +8,13 @@ var fs = require('fs')
  }
 
 var txt = fs.readFileSync(process.argv[2]).toString() //read in document
-var totality = txt.split('\n').toInt()
+var totality = txt.split('\n')
 
 
 var dim = totality[0].split('x')
-var arr = [''] 
+var arr = [[],[]] 
+for(let i = 0; i<=dim[0]-1; i++){ //for loop that creates the two dimensional array
+    arr[i]=totality[i+1].split(' ')
+}
 console.log(dim)
+console.log(arr)
