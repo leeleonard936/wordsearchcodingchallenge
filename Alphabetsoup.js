@@ -11,10 +11,15 @@ var txt = fs.readFileSync(process.argv[2]).toString() //read in document
 var totality = txt.split('\n')
 
 
-var dim = totality[0].split('x')
+var dim = totality[0].split('x')//get dimensions
 var arr = [[],[]] 
 for(let i = 0; i<=dim[0]-1; i++){ //for loop that creates the two dimensional array
     arr[i]=totality[i+1].split(' ')
 }
+var solutions = totality.slice(Number(dim[0])+1)
+
+
+//Tests to verify input during coding
 console.log(dim)
 console.log(arr)
+console.log(solutions)
