@@ -29,7 +29,6 @@ solutions.forEach( answer =>  {// find answer in array
         var startx, starty, endx, endy;
         var cont = true
         var ans = answer.split('')
-        console.log (answer)
         for(var y = 0; y < Number(dim[0]); y++){
             for(var x = 0; x < Number(dim[1]); x++){ // the -1 is to remove the carriage return
                 if(arr[y][x] == ans[0]){
@@ -67,34 +66,6 @@ solutions.forEach( answer =>  {// find answer in array
 )
 
 //Tests to verify input during input work
-console.log(dim)
-console.log(arr)
-console.log(solutions)
-
-//doesnt work, remove at end
-// if(arr[y][x] == ans[0]){
-//     var xdirection = 0
-//     var ydirection = 0
-//     var xcoord = x
-//     var ycoord = y
-//     var cont = true
-//     for(let ydirection = -1; ydirection <= 1; ydirection++){
-//         for(let xdirection = -1; xdirection <= 1; xdirection++){
-//             var iterate = 0
-//             while(ycoord>=0 && ycoord<=Number(dim[0])-1 && xcoord>=0 && xcoord<=Number(dim[1])-1 && cont == true){ //bounds test
-//                 if(iterate == answer.length){
-                    
-//                     console.log(answer + ' ' + y + ':' + x + ycoord + ':' + xcoord)
-//                     cont == false
-//                 }
-//                 if(arr[ycoord][xcoord]!=ans[iterate]){
-//                     cont = false
-//                 }
-//                 ycoord = ycoord + ydirection
-//                 xcoord = xcoord + xdirection
-//                 iterate++
-        
-//             }
-//         }
-//     }
-// }
+// console.log(dim)
+// console.log(arr)
+// console.log(solutions)
