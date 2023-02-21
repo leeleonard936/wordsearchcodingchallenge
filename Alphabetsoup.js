@@ -52,7 +52,7 @@ solutions.forEach( answer =>  {// find answer in array
                                         }
                                     }
                                     if(anstest == answer.substring(1)){
-                                        console.log(answer + '   ' + Number(y+1) +':'+ Number(x+1) +' '+Number(endy+1)+':'+Number(endx+1))
+                                        console.log(answer + '   ' + Number(y) +':'+ Number(x) +' '+Number(endy)+':'+Number(endx))
                                     }
                                 }
                                 
