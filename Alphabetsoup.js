@@ -11,7 +11,8 @@ var fs = require('fs')
  }
 
 var txt = fs.readFileSync(process.argv[2]).toString() //read in document
-var totality = txt.split('\n')
+var totality = txt.split('\r\n')
+
 
 
 var dim = totality[0].split('x')//get dimensions
@@ -25,12 +26,40 @@ var solutions = totality.slice(Number(dim[0])+1)//creates answer array
 var solnoutput = [];
 
 solutions.forEach( answer =>  {// find answer in array
-        var start, end;
+        var startx, starty, endx, endy;
+        var cont = true
+        console.log (answer)
         var ans = answer.split('')
         for(var y = 0; y < Number(dim[0]); y++){
-            for(var x = 0; x < Number(dim[1])-1; x++){
+            for(var x = 0; x < Number(dim[1])-1; x++){ // the -1 is to remove the carriage return
                 if(arr[y][x] == ans[0]){
-                    console.log(answer)
+                    //console.log(x+' ' + y)
+                    for(var ydir = -1; ydir <=1; ydir++){
+                        for(var xdir = -1; xdir <=1; xdir++){
+                            if(y+ydir>-1&&x+xdir>-1&&y+ydir<Number(dim[0])&&x+xdir<Number(dim[1])-1){
+                                if(arr[y+ydir][x+xdir] == ans[1]){
+                                    var anstest = ''
+                                    endy = y+ydir
+                                    endx = x+xdir
+                                    
+                                    
+                                    var i = 1 
+                                    while(endy<Number(dim[0])&&endx<Number(dim[1])&&arr[endy][endx]==ans[i]){
+                                        anstest = anstest.concat(ans[i])
+                                        i++
+                                        endy =endy+ydir
+                                        endx = endx+xdir
+                                        
+                                    }
+                                    console.log(anstest)
+                                    if(anstest == answer){
+                                        console.log('   ' + y+':'+x+' '+endy+':'+endx)
+                                    }
+                                }
+                                
+                            }
+                        }    
+                    }
                 }
             }
         }
@@ -42,6 +71,7 @@ console.log(dim)
 console.log(arr)
 console.log(solutions)
 console.log(solnoutput)
+
 //doesnt work, remove at end
 // if(arr[y][x] == ans[0]){
 //     var xdirection = 0
