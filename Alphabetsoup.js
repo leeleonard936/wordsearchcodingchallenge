@@ -21,22 +21,21 @@ for(let i = 0; i<=dim[0]-1; i++){ //for loop that creates the two dimensional ar
     arr[i]=totality[i+1].split(' ')
 }
 var solutions = totality.slice(Number(dim[0])+1)//creates answer array
-
 //solution testing from here on out
-var solnoutput = [];
+//var solnoutput = [];
 
 solutions.forEach( answer =>  {// find answer in array
+        answer = answer.split(' ').join('')
         var startx, starty, endx, endy;
         var cont = true
-        console.log (answer)
         var ans = answer.split('')
+        console.log (answer)
         for(var y = 0; y < Number(dim[0]); y++){
-            for(var x = 0; x < Number(dim[1])-1; x++){ // the -1 is to remove the carriage return
+            for(var x = 0; x < Number(dim[1]); x++){ // the -1 is to remove the carriage return
                 if(arr[y][x] == ans[0]){
-                    //console.log(x+' ' + y)
                     for(var ydir = -1; ydir <=1; ydir++){
                         for(var xdir = -1; xdir <=1; xdir++){
-                            if(y+ydir>-1&&x+xdir>-1&&y+ydir<Number(dim[0])&&x+xdir<Number(dim[1])-1){
+                            if(y+ydir>-1&&x+xdir>-1&&y+ydir<Number(dim[0])&&x+xdir<Number(dim[1])){
                                 if(arr[y+ydir][x+xdir] == ans[1]){
                                     var anstest = ''
                                     endy = y+ydir
@@ -47,13 +46,14 @@ solutions.forEach( answer =>  {// find answer in array
                                     while(endy<Number(dim[0])&&endx<Number(dim[1])&&arr[endy][endx]==ans[i]){
                                         anstest = anstest.concat(ans[i])
                                         i++
-                                        endy =endy+ydir
-                                        endx = endx+xdir
-                                        
+                                        if(i<answer.length)
+                                        {
+                                            endy = endy+ydir
+                                            endx = endx+xdir
+                                        }
                                     }
-                                    console.log(anstest)
-                                    if(anstest == answer){
-                                        console.log('   ' + y+':'+x+' '+endy+':'+endx)
+                                    if(anstest == answer.substring(1)){
+                                        console.log(answer + '   ' + Number(y+1) +':'+ Number(x+1) +' '+Number(endy+1)+':'+Number(endx+1))
                                     }
                                 }
                                 
@@ -70,7 +70,6 @@ solutions.forEach( answer =>  {// find answer in array
 console.log(dim)
 console.log(arr)
 console.log(solutions)
-console.log(solnoutput)
 
 //doesnt work, remove at end
 // if(arr[y][x] == ans[0]){
